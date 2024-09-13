@@ -26,4 +26,6 @@ Console.Write("Enter radius (cm): ");
 double r = double.Parse(Console.ReadLine()!);
 double area = Math.PI * Math.Pow(r, 2);
 
-Console.WriteLine($"Circle area: {area} cm");
+double rounded = Math.Round(area, 2);
+
+Console.WriteLine($"Circle area: {rounded} cm");
