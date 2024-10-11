@@ -6,8 +6,8 @@ double money = int.Parse(Console.ReadLine());
 
 while (money > 0)
 {
-    Console.Write("Guess the number: ");
-    int number = int.Parse(Console.ReadLine());
+    Console.Write("Guess the number [1-6]...");
+    int number = int.Parse(Console.ReadKey().KeyChar.ToString());
 
     Console.Clear();
 
