@@ -9,7 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "02_In_Out", "02_In_Out\02_I
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "03_logic", "03_logic\03_logic.csproj", "{1B05F7E3-DEE6-4EEA-9D9B-5C20F3F82EFB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "04_loops", "04_loops\04_loops.csproj", "{6079A815-6148-43D0-9E40-A63B75892BF3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "04_loops", "04_loops\04_loops.csproj", "{6079A815-6148-43D0-9E40-A63B75892BF3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "05_rand_game", "05_rand_game\05_rand_game.csproj", "{EF8EB22F-2E41-4FA3-9C39-581ABA584CEB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{6079A815-6148-43D0-9E40-A63B75892BF3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6079A815-6148-43D0-9E40-A63B75892BF3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6079A815-6148-43D0-9E40-A63B75892BF3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EF8EB22F-2E41-4FA3-9C39-581ABA584CEB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EF8EB22F-2E41-4FA3-9C39-581ABA584CEB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EF8EB22F-2E41-4FA3-9C39-581ABA584CEB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EF8EB22F-2E41-4FA3-9C39-581ABA584CEB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
