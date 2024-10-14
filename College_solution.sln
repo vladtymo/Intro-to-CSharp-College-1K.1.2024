@@ -13,6 +13,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "04_loops", "04_loops\04_loo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "05_rand_game", "05_rand_game\05_rand_game.csproj", "{EF8EB22F-2E41-4FA3-9C39-581ABA584CEB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "06_arrays", "06_arrays\06_arrays.csproj", "{9B2108B1-EF8D-4F60-B353-27285C4C675E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "07_puzzle", "07_puzzle\07_puzzle.csproj", "{32E0F6FA-6767-4AC2-82ED-FFD4BCC29EA6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +43,14 @@ Global
 		{EF8EB22F-2E41-4FA3-9C39-581ABA584CEB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EF8EB22F-2E41-4FA3-9C39-581ABA584CEB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EF8EB22F-2E41-4FA3-9C39-581ABA584CEB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9B2108B1-EF8D-4F60-B353-27285C4C675E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9B2108B1-EF8D-4F60-B353-27285C4C675E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9B2108B1-EF8D-4F60-B353-27285C4C675E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9B2108B1-EF8D-4F60-B353-27285C4C675E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{32E0F6FA-6767-4AC2-82ED-FFD4BCC29EA6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{32E0F6FA-6767-4AC2-82ED-FFD4BCC29EA6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{32E0F6FA-6767-4AC2-82ED-FFD4BCC29EA6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{32E0F6FA-6767-4AC2-82ED-FFD4BCC29EA6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
