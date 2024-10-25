@@ -64,7 +64,11 @@ void GetDirection()
 {
     if (Console.KeyAvailable)
     {
-        var key = Console.ReadKey().Key;
+        ConsoleKey key;
+        do
+        {
+            key = Console.ReadKey().Key;
+        } while (Console.KeyAvailable);
 
         switch (key)
         {
