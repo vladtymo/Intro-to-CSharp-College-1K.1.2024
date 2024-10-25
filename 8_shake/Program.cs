@@ -1,5 +1,7 @@
 ﻿//Console.OutputEncoding = System.Text.Encoding.GetEncoding(28591);
 
+using System.Diagnostics;
+
 Console.CursorVisible = false;
 var rand = new Random();
 
@@ -7,6 +9,7 @@ int score = 0;
 
 // швидкість руху змійки
 int delay = 300;
+Stopwatch watch = new Stopwatch();
 
 // розмір поля
 const int sizeX = 16 * 2;
@@ -29,17 +32,24 @@ PrintMap();
 PrintSnake();
 PutApple();
 
+// очікуємо нажаття для старту
+Console.ReadKey(); 
+
+watch.Start();
+
 while (!CheckFail())
 {
-    GetDirection();
-    Move();
-
-    if (IsApple())
+    if (watch.ElapsedMilliseconds > delay)
     {
-        EatApple();
+        GetDirection();
+        Move();
+        watch.Restart();
     }
     
-    Thread.Sleep(delay);
+    if (IsApple())
+        EatApple();
+    
+    //Thread.Sleep(delay);
 }
 
 Console.ReadKey();
@@ -137,7 +147,7 @@ void PrintSnake()
 
 void PrintScore()
 {
-    Console.SetCursorPosition(0, sizeY + 4);
+    Console.SetCursorPosition(0, sizeY + 2);
     Console.ForegroundColor = ConsoleColor.White;
     Console.Write($"Score: {score}");
 }
@@ -182,6 +192,11 @@ void PrintApple(int x, int y)
     Console.SetCursorPosition(x + 1, y + 1);
     Console.ForegroundColor = ConsoleColor.Red;
     Console.Write("*");
+}
+
+bool IsWin()
+{
+    return score == 33;
 }
 void PutApple()
 {
