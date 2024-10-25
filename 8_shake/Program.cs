@@ -9,7 +9,6 @@ int score = 0;
 
 // швидкість руху змійки
 int delay = 300;
-Stopwatch watch = new Stopwatch();
 
 // розмір поля
 const int sizeX = 16 * 2;
@@ -35,21 +34,15 @@ PutApple();
 // очікуємо нажаття для старту
 Console.ReadKey(); 
 
-watch.Start();
-
 while (!CheckFail())
 {
-    if (watch.ElapsedMilliseconds > delay)
-    {
-        GetDirection();
-        Move();
-        watch.Restart();
-    }
+    GetDirection();
+    Move();
     
     if (IsApple())
         EatApple();
     
-    //Thread.Sleep(delay);
+    Thread.Sleep(delay);
 }
 
 Console.ReadKey();
@@ -64,11 +57,7 @@ void GetDirection()
 {
     if (Console.KeyAvailable)
     {
-        ConsoleKey key;
-        do
-        {
-            key = Console.ReadKey().Key;
-        } while (Console.KeyAvailable);
+        var key = Console.ReadKey().Key;
 
         switch (key)
         {
