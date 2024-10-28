@@ -1,11 +1,13 @@
 ﻿//Console.OutputEncoding = System.Text.Encoding.GetEncoding(28591);
-
 using System.Diagnostics;
+using _8_shake;
 
 Console.CursorVisible = false;
 var rand = new Random();
 
 int score = 0;
+
+Queue<Coord> coords = new();
 
 // швидкість руху змійки
 int delay = 300;
@@ -21,6 +23,8 @@ const int fruit = 1;
 int snakeX = sizeX / 2; 
 int snakeY = sizeY / 2;
 
+coords.Enqueue(new(snakeX, snakeY));
+
 // "Left", "Right", "Up", "Down"
 string direction = "Right";
 
@@ -32,19 +36,20 @@ PrintSnake();
 PutApple();
 
 // очікуємо нажаття для старту
-Console.ReadKey(); 
+Console.ReadKey();
 
-while (!CheckFail())
+while(true)
 {
     GetDirection();
-    Move();
-    
+    if (!Move()) break;
+
     if (IsApple())
         EatApple();
-    
+
     Thread.Sleep(delay);
 }
 
+Console.WriteLine("Game Over!");
 Console.ReadKey();
 
 void IncreaseSpeed()
@@ -82,9 +87,10 @@ void GetDirection()
         
 }
 
-void Move()
+bool Move()
 {
-    ClearSnake();
+    var head = new Coord(snakeX, snakeY);
+    
     switch (direction)
     {
         case "Right":
@@ -100,7 +106,18 @@ void Move()
             snakeY -= 1;
             break;
     }
+
+    if (CheckFail()) return false;
+
+    if (!IsApple())
+        ClearSnake();
+    //else
+        //PrintBody(head);
+    
+    coords.Enqueue(new(snakeX, snakeY));
+    
     PrintSnake();
+    return true;
 }
 
 bool CheckFail()
@@ -126,9 +143,11 @@ void EatApple()
 }
 void ClearSnake()
 {
-    Console.SetCursorPosition(snakeX + 1, snakeY + 1);
+    var tail = coords.Dequeue();
+    
+    Console.SetCursorPosition(tail.X + 1, tail.Y + 1);
     Console.ForegroundColor = ConsoleColor.DarkCyan;
-    Console.Write("#");
+    Console.Write(" ");
 }
 
 void PrintSnake()
@@ -136,6 +155,12 @@ void PrintSnake()
     Console.SetCursorPosition(snakeX + 1, snakeY + 1);
     Console.ForegroundColor = ConsoleColor.DarkMagenta;
     Console.Write("@");
+}
+void PrintBody(Coord head)
+{
+    Console.SetCursorPosition(head.X + 1, head.Y + 1);
+    Console.ForegroundColor = ConsoleColor.Red;
+    Console.Write((char)219);
 }
 
 void PrintScore()
@@ -163,7 +188,7 @@ void PrintMap()
         {
             Console.ForegroundColor = ConsoleColor.DarkCyan;
             if (map[y, x] == empty)
-                Console.Write("#");
+                Console.Write(" ");
         }
         Console.ForegroundColor = ConsoleColor.DarkYellow;
         Console.Write("#");
