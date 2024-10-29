@@ -6,7 +6,6 @@
  * super apple +
  */
 
-
 //Console.OutputEncoding = System.Text.Encoding.GetEncoding(28591);
 using System.Diagnostics;
 using _8_shake;
@@ -19,7 +18,7 @@ int score = 0;
 Queue<Coord> coords = new();
 
 // швидкість руху змійки
-int delay = 300;
+int delay = 200;
 
 // розмір поля
 const int sizeX = 16 * 2;
@@ -29,8 +28,8 @@ const int empty = 0;
 const int fruit = 1;
 const int superFruit = 2;
 
-const int winCount = 100;
-const int superSuperFruitFrequency = 10;
+const int winCount = 50;
+const int superSuperFruitFrequency = 7;
 
 // координати голови змійки
 int snakeX = sizeX / 2; 
@@ -70,8 +69,8 @@ else
 
 void IncreaseSpeed()
 {
-    if (delay > 50)
-        delay -= 10;
+    if (delay > 100)
+        delay -= 5;
 }
 
 void GetDirection()
@@ -80,6 +79,11 @@ void GetDirection()
     {
         var key = Console.ReadKey().Key;
 
+        while (Console.KeyAvailable)
+        {
+            key = Console.ReadKey().Key;
+        }
+        
         switch (key)
         {
             case ConsoleKey.LeftArrow:
