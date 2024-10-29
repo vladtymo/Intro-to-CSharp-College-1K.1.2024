@@ -1,4 +1,13 @@
-﻿//Console.OutputEncoding = System.Text.Encoding.GetEncoding(28591);
+﻿/*
+ TODO:
+ * game over screen +
+ * snake body symbol
+ * progress +
+ * super apple +
+ */
+
+
+//Console.OutputEncoding = System.Text.Encoding.GetEncoding(28591);
 using System.Diagnostics;
 using _8_shake;
 
@@ -18,6 +27,10 @@ const int sizeY = 16;
 
 const int empty = 0;
 const int fruit = 1;
+const int superFruit = 2;
+
+const int winCount = 100;
+const int superSuperFruitFrequency = 10;
 
 // координати голови змійки
 int snakeX = sizeX / 2; 
@@ -32,13 +45,14 @@ int[,] map = new int[sizeY, sizeX]; // на початку все 0
 
 Console.Clear();
 PrintMap();
+PrintProgressBar();
 PrintSnake();
 PutApple();
 
 // очікуємо нажаття для старту
 Console.ReadKey();
 
-while(true)
+while(!IsWin())
 {
     GetDirection();
     if (!Move()) break;
@@ -49,8 +63,10 @@ while(true)
     Thread.Sleep(delay);
 }
 
-Console.WriteLine("Game Over!");
-Console.ReadKey();
+if (IsWin())
+    PrintYouWonPhrase();
+else
+    PrintGameOver();
 
 void IncreaseSpeed()
 {
@@ -130,15 +146,18 @@ bool CheckFail()
 
 bool IsApple()
 {
-    return map[snakeY, snakeX] == fruit;
+    return map[snakeY, snakeX] == fruit || map[snakeY, snakeX] == superFruit;
+}
+bool IsNextSuperApple()
+{
+    return score > 1 && score % superSuperFruitFrequency == 0;
 }
 
 void EatApple()
 {
     map[snakeY, snakeX] = empty;
+    AddScore();
     PutApple();
-    score++;
-    PrintScore();
     IncreaseSpeed();
 }
 void ClearSnake()
@@ -163,11 +182,29 @@ void PrintBody(Coord head)
     Console.Write((char)219);
 }
 
-void PrintScore()
+void AddScore()
+{
+    Console.SetCursorPosition(10 + score, sizeY + 2);
+    if (IsNextSuperApple())
+    {
+        Console.ForegroundColor = ConsoleColor.Yellow;
+        Console.Write("***");
+        score += 3;
+    }
+    else
+    {
+        Console.ForegroundColor = ConsoleColor.Red;
+        Console.Write("*");
+        score++;
+    }
+}
+void PrintProgressBar()
 {
     Console.SetCursorPosition(0, sizeY + 2);
     Console.ForegroundColor = ConsoleColor.White;
-    Console.Write($"Score: {score}");
+    Console.Write("Progress: ");
+    Console.ForegroundColor = ConsoleColor.Gray;
+    Console.Write(new string('*', winCount));
 }
 
 void PrintMap()
@@ -208,13 +245,13 @@ void PrintMap()
 void PrintApple(int x, int y)
 {
     Console.SetCursorPosition(x + 1, y + 1);
-    Console.ForegroundColor = ConsoleColor.Red;
+    Console.ForegroundColor = IsNextSuperApple() ? ConsoleColor.Yellow : ConsoleColor.Red;
     Console.Write("*");
 }
 
 bool IsWin()
 {
-    return score == 33;
+    return score == winCount;
 }
 void PutApple()
 {
@@ -226,6 +263,76 @@ void PutApple()
 
     } while (map[y, x] != empty);
     
-    map[y, x] = fruit;
+    if (IsNextSuperApple())
+        map[y, x] = superFruit;
+    else
+        map[y, x] = fruit;
     PrintApple(x, y);
+}
+
+static void PrintGameOver()
+{
+    Console.Clear();
+    // ASCII Art for "Game Over"
+    string[] gameOverArt = {
+        @"  ____                         ___                ",
+        @" / ___| __ _ _ __ ___   ___   / _ \__   _____ _ __ ",
+        @"| |  _ / _` | '_ ` _ \ / _ \ | | | \ \ / / _ \ '__|",
+        @"| |_| | (_| | | | | | |  __/ | |_| |\ V /  __/ |   ",
+        @" \____|\__,_|_| |_| |_|\___|  \___/  \_/ \___|_|   "
+    };
+
+    // Set Console Colors
+    Console.ForegroundColor = ConsoleColor.Red;
+    Console.BackgroundColor = ConsoleColor.Black;
+
+    // Print each line with a delay for effect
+    foreach (string line in gameOverArt)
+    {
+        foreach (char c in line)
+        {
+            Console.Write(c);
+            Thread.Sleep(2); // Delay for dramatic effect
+        }
+        Console.WriteLine();
+    }
+
+    Console.ResetColor();
+    Console.WriteLine("\nPress any key to exit...");
+    Console.ReadKey();
+}
+
+static void PrintYouWonPhrase()
+{
+    Console.Clear();
+    // ASCII Art for "You Won!"
+    string[] youWonArt = {
+        @" ██    ██  ██████  ██    ██     ██     ██  ██████  ███    ██ ",
+        @" ██    ██ ██    ██ ██    ██     ██     ██ ██    ██ ████   ██ ",
+        @" ██    ██ ██    ██ ██    ██     ██  █  ██ ██    ██ ██ ██  ██ ",
+        @"  ██  ██  ██    ██ ██    ██     ██ ███ ██ ██    ██ ██  ██ ██ ",
+        @"   ████    ██████   ██████       ███ ███   ██████  ██   ████ ",
+        @"                                                             ",
+        @"                         YOU WON!                            "
+    };
+
+    // Set Console Colors
+    Console.ForegroundColor = ConsoleColor.Green;
+    Console.BackgroundColor = ConsoleColor.Black;
+
+    // Print each character with a delay for a dramatic effect
+    foreach (string line in youWonArt)
+    {
+        foreach (char c in line)
+        {
+            Console.Write(c);
+            Thread.Sleep(5); // Delay per character for suspense
+        }
+        Console.WriteLine();
+        Thread.Sleep(10); // Slight delay after each line
+    }
+
+    Console.ResetColor();
+    Console.WriteLine("\nPress any key to exit...");
+    Console.ReadKey();
 }
