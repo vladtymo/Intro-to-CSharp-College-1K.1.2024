@@ -6,7 +6,7 @@ internal class Program
     static Random rand = new();
     
     // розміри карти
-    const int width = 100;
+    const int width = 50;
     const int height = 20;
     
     // позиція авто, на початку по центру
@@ -143,8 +143,8 @@ internal class Program
     }
     static void IncreaseSpeed()
     {
-        if (bombInterval > 400)
-            bombInterval -= 50;
+        if (bombInterval > 200)
+            bombInterval -= 25;
         if (bombSpeed > 50)
             bombSpeed -= 10;
     }
