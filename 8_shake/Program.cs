@@ -21,12 +21,13 @@ Queue<Coord> coords = new();
 int delay = 200;
 
 // розмір поля
-const int sizeX = 16 * 2;
+const int sizeX = 10 * 2;
 const int sizeY = 16;
 
 const int empty = 0;
 const int fruit = 1;
 const int superFruit = 2;
+const int snake = 3;
 
 const int winCount = 50;
 const int superSuperFruitFrequency = 7;
@@ -109,8 +110,6 @@ void GetDirection()
 
 bool Move()
 {
-    var head = new Coord(snakeX, snakeY);
-    
     switch (direction)
     {
         case "Right":
@@ -171,6 +170,7 @@ void ClearSnake()
     Console.SetCursorPosition(tail.X + 1, tail.Y + 1);
     Console.ForegroundColor = ConsoleColor.DarkCyan;
     Console.Write(" ");
+    map[tail.Y, tail.X] = empty;
 }
 
 void PrintSnake()
@@ -178,6 +178,7 @@ void PrintSnake()
     Console.SetCursorPosition(snakeX + 1, snakeY + 1);
     Console.ForegroundColor = ConsoleColor.DarkMagenta;
     Console.Write("@");
+    map[snakeY, snakeX] = snake;
 }
 void PrintBody(Coord head)
 {
@@ -227,6 +228,7 @@ void PrintMap()
         
         for (int x = 0; x < sizeX; x++)
         {
+            //Console.Write(map[y, x]);
             Console.ForegroundColor = ConsoleColor.DarkCyan;
             if (map[y, x] == empty)
                 Console.Write(" ");
