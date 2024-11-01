@@ -16,6 +16,7 @@ var rand = new Random();
 int score = 0;
 
 Queue<Coord> coords = new();
+Coord? head = null;
 
 // швидкість руху змійки
 int delay = 200;
@@ -60,6 +61,7 @@ while(!IsWin())
     if (IsApple())
         EatApple();
 
+    PrintSnake();
     Thread.Sleep(delay);
 }
 
@@ -110,6 +112,9 @@ void GetDirection()
 
 bool Move()
 {
+    if (coords.Count > 1)
+        head = new Coord(snakeX, snakeY);
+    
     switch (direction)
     {
         case "Right":
@@ -131,11 +136,10 @@ bool Move()
     if (!IsApple())
         ClearSnake();
     //else
-        //PrintBody(head);
+    //    PrintBody(head);
     
     coords.Enqueue(new(snakeX, snakeY));
     
-    PrintSnake();
     return true;
 }
 
@@ -144,7 +148,8 @@ bool CheckFail()
     return snakeX < 0 || 
            snakeX >= sizeX || 
            snakeY < 0 || 
-           snakeY >= sizeY;
+           snakeY >= sizeY ||
+           map[snakeY, snakeX] == snake;
 }
 
 bool IsApple()
@@ -175,16 +180,20 @@ void ClearSnake()
 
 void PrintSnake()
 {
+    PrintBody(head);
+    
     Console.SetCursorPosition(snakeX + 1, snakeY + 1);
     Console.ForegroundColor = ConsoleColor.DarkMagenta;
-    Console.Write("@");
+    Console.Write("\u25ef");
     map[snakeY, snakeX] = snake;
 }
-void PrintBody(Coord head)
+void PrintBody(Coord? head)
 {
-    Console.SetCursorPosition(head.X + 1, head.Y + 1);
-    Console.ForegroundColor = ConsoleColor.Red;
-    Console.Write((char)219);
+    if (head == null) return;
+        
+    Console.SetCursorPosition(head.Value.X + 1, head.Value.Y + 1);
+    Console.ForegroundColor = ConsoleColor.Green;
+    Console.Write('\u25ef');
 }
 
 void AddScore()
@@ -257,7 +266,7 @@ void PrintApple(int x, int y)
 
 bool IsWin()
 {
-    return score == winCount;
+    return score >= winCount;
 }
 void PutApple()
 {
