@@ -73,11 +73,21 @@ internal class Program
 
     static void MoveAllBombs()
     {
-        foreach (var i in boombs)
+        for (int x = 0; x < boombs.Count; x++)
         {
-            ClearBomb(i); 
-            i.Y += 1;
-            PrintBomb(i);
+            var i = boombs[x];
+            
+            ClearBomb(i);
+            if (i.Y >= height + carHeight)
+            {
+                boombs.Remove(i);
+                --x;
+            }
+            else
+            {
+                i.Y += 1;
+                PrintBomb(i);
+            }
         }
     }
     static void PrintBomb(Boomb bomd)
