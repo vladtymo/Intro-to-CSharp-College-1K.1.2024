@@ -94,7 +94,7 @@ internal class Program
     }
     static void InitialSettings()
     {
-        Console.SetWindowSize(width, height);
+        //Console.SetWindowSize(width, height);
         Console.CursorVisible = false;
         Console.Clear();
     }
