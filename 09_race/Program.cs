@@ -6,23 +6,25 @@ internal class Program
     static Random rand = new();
     
     // розміри карти
-    const int width = 50;
-    const int height = 20;
+    const int rides = 4;   // кількість доріг по ширині
+    const int height = 20; // кількість комірок по висоті
     
-    // позиція авто, на початку по центру
-    static int positionX = width / 2;
+    // позиція авто, на початку на першій доріжці
+    static int currentRide = 0;
     
     // розміри авто (в символах)
     const int carWidth = 5;
     const int carHeight = 4;
 
     // швидкість генерації бобм (в мілісекундах)
-    static int bombInterval = 2000;
+    //static int bombInterval = 2000;
     // швидкість падіння бобм (в мілісекундах)
-    static int bombSpeed = 500;
+    static int speed = 400;
     
     // кількість пройдених бомб
     static int score = 0;
+    // кількість падінь
+    static int count = 0;
     
     // колекція активних бомб
     static List<Boomb> boombs = new();
@@ -37,22 +39,24 @@ internal class Program
         InitialSettings();
         PrintCar();
 
-        bombTimer.Start();
+        //bombTimer.Start();
         bombFallTimer.Start();
         
         while (!IsFail())
         {
             // чи настав час генерувати нову бомбу
-            if (bombTimer.ElapsedMilliseconds >= bombInterval)
+            if (count % (carHeight * 2 + 1) == 0)//bombTimer.ElapsedMilliseconds >= bombInterval)
             {
                 GenerateBomb();
                 IncreaseSpeed();
-                bombTimer.Restart();
+                ++count;
+                //bombTimer.Restart();
             }
             // чи настав час падіння бобм
-            if (bombFallTimer.ElapsedMilliseconds >= bombSpeed)
+            if (bombFallTimer.ElapsedMilliseconds >= speed)
             {
                 MoveAllBombs();
+                ++count;
                 bombFallTimer.Restart();
             }
             
@@ -64,8 +68,8 @@ internal class Program
 
     static void GenerateBomb()
     {
-        int x = rand.Next(width);
-        var bomb = new Boomb(x, 0);
+        int r = rand.Next(rides);
+        var bomb = new Boomb(r);
         boombs.Add(bomb);
         PrintBomb(bomb);
         score++;
@@ -92,15 +96,27 @@ internal class Program
     }
     static void PrintBomb(Boomb bomd)
     {
-        Console.SetCursorPosition(bomd.X, bomd.Y);
         Console.ForegroundColor = ConsoleColor.Red;
-        Console.Write('*');
+        Console.SetCursorPosition(bomd.ride * carWidth, bomd.Y);
+        Console.Write(@"_/|\_");
+        Console.SetCursorPosition(bomd.ride * carWidth, bomd.Y + 1);
+        Console.Write("O _ O");
+        Console.SetCursorPosition(bomd.ride * carWidth, bomd.Y + 2);
+        Console.Write("| _ |");
+        Console.SetCursorPosition(bomd.ride * carWidth, bomd.Y + 3);
+        Console.Write("O | O");
         Console.ResetColor();
     }
     static void ClearBomb(Boomb bomd)
     {
-        Console.SetCursorPosition(bomd.X, bomd.Y);
-        Console.Write(' ');
+        for (var y = 0; y < carHeight; y++)
+        {
+            Console.SetCursorPosition(bomd.ride * carWidth, bomd.Y + y);
+            Console.Write(new string(' ', carWidth));
+        }
+        
+        // Console.SetCursorPosition(bomd.ride * carWidth, bomd.Y);
+        // Console.Write(' ');
     }
     static void InitialSettings()
     {
@@ -119,11 +135,11 @@ internal class Program
             {
                 case ConsoleKey.LeftArrow:
                     if (OnLeftSide()) break;
-                    positionX -= carWidth;
+                    currentRide--;
                     break;
                 case ConsoleKey.RightArrow:
                     if (OnRightSide()) break;
-                    positionX += carWidth;
+                    currentRide++;
                     break;
             }
             PrintCar();
@@ -134,7 +150,7 @@ internal class Program
     {
         foreach (var i in boombs)
         {
-            if (i.X >= positionX && i.X < positionX + carWidth &&
+            if (i.ride == currentRide &&
                 i.Y >= height && i.Y <= height + carHeight - 1)
                 return true;
         }
@@ -143,29 +159,34 @@ internal class Program
     }
     static void IncreaseSpeed()
     {
-        if (bombInterval > 200)
-            bombInterval -= 25;
-        if (bombSpeed > 50)
-            bombSpeed -= 10;
+        //if (bombInterval > 200)
+        //    bombInterval -= 25;
+        if (speed > 70)
+            speed -= 10;
+
+        Console.SetCursorPosition(0, 0);
+        Console.Write(new string(' ', 30));
+        Console.SetCursorPosition(0, 0);
+        Console.WriteLine(speed);
     }
     static bool OnLeftSide()
     {
-        return positionX <= 0;
+        return currentRide <= 0;
     }
     static bool OnRightSide()
     {
-        return positionX + carWidth >= width;
+        return currentRide >= rides - 1;
     }
     static void PrintCar()
     {
         Console.ForegroundColor = ConsoleColor.Green;
-        Console.SetCursorPosition(positionX, height);
+        Console.SetCursorPosition(currentRide * carWidth, height);
         Console.Write(@"_/|\_");
-        Console.SetCursorPosition(positionX, height + 1);
+        Console.SetCursorPosition(currentRide * carWidth, height + 1);
         Console.Write("O _ O");
-        Console.SetCursorPosition(positionX, height + 2);
+        Console.SetCursorPosition(currentRide * carWidth, height + 2);
         Console.Write("| _ |");
-        Console.SetCursorPosition(positionX, height + 3);
+        Console.SetCursorPosition(currentRide * carWidth, height + 3);
         Console.Write("O | O");
         Console.ResetColor();
     }
@@ -173,7 +194,7 @@ internal class Program
     {
         for (var y = 0; y < carHeight; y++)
         {
-            Console.SetCursorPosition(positionX, height + y);
+            Console.SetCursorPosition(currentRide * carWidth, height + y);
             Console.Write(new string(' ', carWidth));
         }
     }
@@ -181,11 +202,12 @@ internal class Program
 
 public class Boomb
 {
-    public int X, Y;
+    public int Y;
+    public int ride;
 
-    public Boomb(int x, int y)
+    public Boomb(int ride)
     {
-        this.X = x;
-        this.Y = y;
+        this.ride = ride;
+        this.Y = 0;
     }
 }
