@@ -6,6 +6,7 @@ int birthYear = int.Parse(Console.ReadLine());
 int age = 2024 - birthYear;
 
 // логічні оператори: > < >= <= == !=
+// всі логічні оператори повертають bool (true/false)
 
 // перевірити чи користувач повнолітній
 if(age >= 18)
