@@ -10,8 +10,6 @@ internal class Program
 
         Console.WriteLine();
     }
-    
-    
 }
 
 class Snake
@@ -32,5 +30,10 @@ class Snake
         Console.Write(symbol);
         
         Console.ResetColor();
+    }
+
+    public void MoveRight()
+    {
+        x += 1;
     }
 }
