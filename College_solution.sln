@@ -23,6 +23,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "09_race", "09_race\09_race.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "10_methods", "10_methods\10_methods.csproj", "{C75861C1-4F1D-4369-9A4E-468F69246627}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "11_oop", "11_oop\11_oop.csproj", "{FE72B142-057E-4E11-ABB2-65062CD64B65}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -69,6 +71,10 @@ Global
 		{C75861C1-4F1D-4369-9A4E-468F69246627}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C75861C1-4F1D-4369-9A4E-468F69246627}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C75861C1-4F1D-4369-9A4E-468F69246627}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FE72B142-057E-4E11-ABB2-65062CD64B65}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FE72B142-057E-4E11-ABB2-65062CD64B65}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FE72B142-057E-4E11-ABB2-65062CD64B65}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FE72B142-057E-4E11-ABB2-65062CD64B65}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
