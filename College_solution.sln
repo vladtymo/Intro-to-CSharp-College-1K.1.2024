@@ -25,6 +25,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "10_methods", "10_methods\10
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "11_oop", "11_oop\11_oop.csproj", "{FE72B142-057E-4E11-ABB2-65062CD64B65}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "12_struct", "12_struct\12_struct.csproj", "{F10FB341-BEAF-4764-A293-2ED496FE16E8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -75,6 +77,10 @@ Global
 		{FE72B142-057E-4E11-ABB2-65062CD64B65}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FE72B142-057E-4E11-ABB2-65062CD64B65}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FE72B142-057E-4E11-ABB2-65062CD64B65}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F10FB341-BEAF-4764-A293-2ED496FE16E8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F10FB341-BEAF-4764-A293-2ED496FE16E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F10FB341-BEAF-4764-A293-2ED496FE16E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F10FB341-BEAF-4764-A293-2ED496FE16E8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
