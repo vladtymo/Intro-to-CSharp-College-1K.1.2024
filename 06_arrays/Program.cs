@@ -14,6 +14,10 @@ Console.WriteLine("Total price: " + prices.Sum());
 // масив кольорів
 string[] colors = ["red", "blue", "green", "yellow", "orange", "purple" ];
 
+Console.WriteLine("3th color: " + colors[2]);
+Console.WriteLine("3th color: " + colors[1]);
+Console.WriteLine("3th color: " + colors[0]);
+
 // index - 0...
 for (int i = 0; i < prices.Length; ++i)
 {
