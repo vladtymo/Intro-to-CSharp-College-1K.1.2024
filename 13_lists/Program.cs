@@ -34,6 +34,9 @@ List<string> countries = new()
     "Italy", 
     "Spain", 
     "USA", 
+    "Andora", 
+    "Antlantida", 
+    "Abidna", 
     "Canada"
 };
 
@@ -57,3 +60,6 @@ PrintList(countries);
 
 int result = scores.Find((x) => x > 2000);
 Console.WriteLine($"Found: {result}");
+
+string? aa = countries.Find((country) => country.First() == 'A' && country.Last() == 'a');
+Console.WriteLine($"Country: {aa}");
