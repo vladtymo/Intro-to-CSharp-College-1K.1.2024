@@ -14,6 +14,9 @@ scores.Add(1001);
 scores.Add(2099);
 scores.Add(2200);
 
+scores.Remove(50);
+scores.RemoveAt(0);
+
 Console.WriteLine($"Count: {scores.Count}");
 Console.WriteLine($"Average: {scores.Average()}");
 Console.WriteLine($"Sum: {scores.Sum()}");

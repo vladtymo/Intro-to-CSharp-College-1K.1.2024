@@ -12,6 +12,7 @@ void PrintMessage(int count, string separator)
 
 PrintMessage(7, "-");
 PrintMessage(2, " ");
+PrintMessage(3, " <!> ");
 
 Console.Write("Enter count: ");
 int c = int.Parse(Console.ReadLine());
