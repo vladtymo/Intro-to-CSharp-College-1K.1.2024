@@ -40,3 +40,33 @@ int distance = int.Parse(Console.ReadLine());
 const float pricePerL = 52.99F;
 
 Console.WriteLine($"Cost of last month: {pricePerL * rozhid / 100 * distance} UAH");
+
+// ------------- Array Algorithms -------------
+
+int[] prices = new int[distance];
+
+List<string> colors = new() {"red", "yellow", "green", "blue", "purple"};
+
+for (int i = 0; i < 5; i++)
+{
+    Console.Write("Enter color: ");
+    colors.Add(Console.ReadLine()!);
+}
+
+Console.WriteLine($"List: {string.Join(", ", colors)}");
+
+colors.Add("white");
+colors.Remove("purple");
+colors.RemoveAt(0);
+
+Console.WriteLine($"Index of orange: {colors.IndexOf("orange")}");
+
+if (colors.Contains("orange"))
+    Console.WriteLine("Green color is present!");
+    
+colors.Sort();
+colors.Reverse();
+
+Console.WriteLine($"Color 4-len: {colors.Find(c => c.Length == 4)}");
+Console.WriteLine($"Color 1-st upper: {colors.Find(c => char.IsUpper(c[0]))}");
+
