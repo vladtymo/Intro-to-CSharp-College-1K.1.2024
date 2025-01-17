@@ -37,6 +37,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "16_algorithms", "16_algorit
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "17_dictionary", "17_dictionary\17_dictionary.csproj", "{E1830E49-C925-4F1B-AC99-D9151D24E188}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "18_stack_queue", "18_stack_queue\18_stack_queue.csproj", "{0F1C8365-B4D8-4FC2-8420-4756B65FB85D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -111,6 +113,10 @@ Global
 		{E1830E49-C925-4F1B-AC99-D9151D24E188}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E1830E49-C925-4F1B-AC99-D9151D24E188}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E1830E49-C925-4F1B-AC99-D9151D24E188}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0F1C8365-B4D8-4FC2-8420-4756B65FB85D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0F1C8365-B4D8-4FC2-8420-4756B65FB85D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0F1C8365-B4D8-4FC2-8420-4756B65FB85D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0F1C8365-B4D8-4FC2-8420-4756B65FB85D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
