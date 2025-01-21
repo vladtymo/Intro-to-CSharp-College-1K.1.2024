@@ -62,3 +62,25 @@ if (brackets.Count == 0)
     Console.WriteLine("Expression is correct!");
 else
     Console.WriteLine("Expression is incorrect!");
+
+// ---- Tower of Hanoi -----
+Stack<int> tower1 = new();
+Stack<int> tower2 = new();
+Stack<int> tower3 = new();
+
+tower1.Push(5);
+tower1.Push(4);
+tower1.Push(3);
+tower1.Push(2);
+tower1.Push(1);
+
+// Завдання: перекласти всі диски з вежі 1 на вежу 3.
+// єдина умова: не можна класти більший диск на менший
+
+Console.WriteLine("----- Tower 1 -----");
+foreach (var disk in tower1)
+    Console.WriteLine($"Disk: {disk}");
+
+Console.WriteLine("----- Tower 3 -----");
+foreach (var disk in tower3)
+    Console.WriteLine($"Disk: {disk}");
