@@ -32,3 +32,33 @@ while (queue.Count > 0)
 
 Console.WriteLine("Queue is empty!");
 
+// ---------- Stack -----------
+Stack<char> brackets = new();
+Dictionary<char, char> pairs = new()
+{
+    // ключ = значення
+    [')'] = '(',
+    [']'] = '[',
+    ['}'] = '{',
+    ['>'] = '<',
+};
+
+string expression = "2 + 2 ({x- x}) <{9 * 7 (4 + 4) {y + x}}>";
+
+foreach (var s in expression)
+{
+    // якщо це відкриваюча дужка
+    if (pairs.Values.Contains(s))
+        brackets.Push(s);
+
+    if (pairs.Keys.Contains(s))
+        if (pairs[s] == brackets.Pop())
+            Console.WriteLine($"{s} is closed!");
+        else
+            Console.WriteLine($"{s} does not closed!");
+}
+
+if (brackets.Count == 0)
+    Console.WriteLine("Expression is correct!");
+else
+    Console.WriteLine("Expression is incorrect!");
