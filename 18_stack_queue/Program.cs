@@ -68,7 +68,6 @@ Stack<int> tower1 = new();
 Stack<int> tower2 = new();
 Stack<int> tower3 = new();
 
-tower1.Push(5);
 tower1.Push(4);
 tower1.Push(3);
 tower1.Push(2);
@@ -77,8 +76,34 @@ tower1.Push(1);
 // Завдання: перекласти всі диски з вежі 1 на вежу 3.
 // єдина умова: не можна класти більший диск на менший
 
+tower2.Push(tower1.Pop());  
+tower3.Push(tower1.Pop());
+tower3.Push(tower2.Pop());
+
+tower2.Push(tower1.Pop());
+tower1.Push(tower3.Pop());
+tower2.Push(tower3.Pop());
+tower2.Push(tower1.Pop());
+
+tower3.Push(tower1.Pop());
+tower3.Push(tower2.Pop());
+tower1.Push(tower2.Pop());
+tower2.Push(tower3.Pop());
+tower3.Push(tower1.Pop());
+
+tower1.Push(tower3.Pop());
+tower1.Push(tower2.Pop());
+tower3.Push(tower2.Pop());
+tower2.Push(tower1.Pop());
+tower3.Push(tower1.Pop());
+tower3.Push(tower2.Pop());
+
 Console.WriteLine("----- Tower 1 -----");
 foreach (var disk in tower1)
+    Console.WriteLine($"Disk: {disk}");
+
+Console.WriteLine("----- Tower 2 -----");
+foreach (var disk in tower2)
     Console.WriteLine($"Disk: {disk}");
 
 Console.WriteLine("----- Tower 3 -----");
