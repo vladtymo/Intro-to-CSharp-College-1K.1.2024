@@ -41,6 +41,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "18_stack_queue", "18_stack_
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "19_bandit", "19_bandit\19_bandit.csproj", "{EA0E5749-2399-46B6-8539-45698CB40C83}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "20_struct", "20_struct\20_struct.csproj", "{F84D4D90-8535-48E1-8585-C11C4380A06D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -123,6 +125,10 @@ Global
 		{EA0E5749-2399-46B6-8539-45698CB40C83}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EA0E5749-2399-46B6-8539-45698CB40C83}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EA0E5749-2399-46B6-8539-45698CB40C83}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F84D4D90-8535-48E1-8585-C11C4380A06D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F84D4D90-8535-48E1-8585-C11C4380A06D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F84D4D90-8535-48E1-8585-C11C4380A06D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F84D4D90-8535-48E1-8585-C11C4380A06D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
