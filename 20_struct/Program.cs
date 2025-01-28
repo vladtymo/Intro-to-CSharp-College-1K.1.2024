@@ -8,6 +8,7 @@ struct Airplane
     public int Passengers { get; set; }
     public string PilotName { get; set; }
 
+    // конструктор
     public Airplane(string model, int seats, string pilotName)
     {
         Passengers = 0;
