@@ -3,10 +3,10 @@
 struct Airplane
 {
     // список властивостей літака
-    public string Model { get; set; }
-    public int Seats { get; set; }
-    public int Passengers { get; set; }
-    public string PilotName { get; set; }
+    private string Model { get; set; }
+    private int Seats { get; set; }
+    private int Passengers { get; set; }
+    private string PilotName { get; set; }
 
     // конструктор
     public Airplane(string model, int seats, string pilotName)
@@ -27,13 +27,20 @@ struct Airplane
     
     public void AddPassengers(int count)
     {
+        if (Passengers + count < 0)
+        {
+            Console.WriteLine("Value cannot be negative!");
+            return;
+        }
+        
         if (Passengers + count > Seats)
         {
             this.Passengers = Seats;
             Console.WriteLine("Not enough seats!");
+            return;
         }
-        else
-            this.Passengers += count;
+       
+        this.Passengers += count;
     }
 }
 
@@ -49,6 +56,11 @@ class Program
         Airplane plane1 = new("Boeing 325", 49, "Vitia");
         Airplane plane2 = new("Mriya", 120, "Luda");
 
+        //plane1.Passengers = -100;
+        plane1.AddPassengers(100);
+        plane1.AddPassengers(-240);
+        plane1.AddPassengers(1477474500);
+        
         // Console.WriteLine($"---- Airplane [{plane1.Model}] ----");
         // Console.WriteLine($"Passengers: {plane1.Passengers} / {plane1.Seats}");
         // Console.WriteLine($"Pilot: {plane1.PilotName}");
