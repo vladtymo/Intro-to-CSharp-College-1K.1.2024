@@ -40,6 +40,24 @@
     }
 }
 
+class CeeperHunterPro : Conditioner
+{
+    private bool isPreventWind;
+    private int dryingLevel;
+    
+    public CeeperHunterPro(string model) : base(model)
+    {
+        this.isPreventWind = false;
+        this.dryingLevel = 3;
+    }
+    
+    public void Dry()
+    {
+        Console.WriteLine($"Drying: {dryingLevel}");
+    }
+}
+
+
 internal class Program
 {
     public static void Main(string[] args)
@@ -50,10 +68,17 @@ internal class Program
             conditioner.Plus();
 
         //conditioner.temperature *= 1000;
+        conditioner.Plus();
         conditioner.Show();
 
         Conditioner con2 = new("Honda Dio 2"); // виклик конструктора
         con2.Minus();
         con2.Show();
+        
+        CeeperHunterPro con3 = new("MG5563 UI");
+        
+        con3.Plus();
+        con3.Dry();
+        con3.Show();
     }
 }
