@@ -1,4 +1,6 @@
-﻿class Conditioner
+﻿using _21_class;
+
+class Conditioner
 {
     private string name;
     private int temperature;
@@ -80,5 +82,21 @@ internal class Program
         con3.Plus();
         con3.Dry();
         con3.Show();
+        
+        // ------------- Bicycle -------------
+        Bicycle bicycle = new();
+        
+        bicycle.Go();
+        
+        Bicycle ukraine = new("Ukraine", 1991, "Blue", 1);
+        ukraine.Go();
+        ukraine.Go();
+
+        ElectricBike patriot = new("Patriot", 2023, "Red", 21, 40);
+        patriot.Drive();
+        patriot.Drive();
+        patriot.Drive();
+        
+        patriot.ChargeBattery();
     }
 }
