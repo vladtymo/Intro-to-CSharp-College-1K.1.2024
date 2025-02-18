@@ -45,6 +45,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "20_struct", "20_struct\20_s
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "21_class", "21_class\21_class.csproj", "{BDEF23A0-C7D5-4718-8908-09402650528C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "22_interfaces", "22_interfaces\22_interfaces.csproj", "{37466354-1044-4EAC-8354-2DEA57E9EB05}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -135,6 +137,10 @@ Global
 		{BDEF23A0-C7D5-4718-8908-09402650528C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BDEF23A0-C7D5-4718-8908-09402650528C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BDEF23A0-C7D5-4718-8908-09402650528C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{37466354-1044-4EAC-8354-2DEA57E9EB05}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{37466354-1044-4EAC-8354-2DEA57E9EB05}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{37466354-1044-4EAC-8354-2DEA57E9EB05}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{37466354-1044-4EAC-8354-2DEA57E9EB05}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
