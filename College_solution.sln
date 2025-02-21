@@ -47,6 +47,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "21_class", "21_class\21_cla
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "22_interfaces", "22_interfaces\22_interfaces.csproj", "{37466354-1044-4EAC-8354-2DEA57E9EB05}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "23_overload_operator", "23_overload_operator\23_overload_operator.csproj", "{FC0B49C9-DF60-4C92-9C42-C0E169FBD2AA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -141,6 +143,10 @@ Global
 		{37466354-1044-4EAC-8354-2DEA57E9EB05}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{37466354-1044-4EAC-8354-2DEA57E9EB05}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{37466354-1044-4EAC-8354-2DEA57E9EB05}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FC0B49C9-DF60-4C92-9C42-C0E169FBD2AA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FC0B49C9-DF60-4C92-9C42-C0E169FBD2AA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FC0B49C9-DF60-4C92-9C42-C0E169FBD2AA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FC0B49C9-DF60-4C92-9C42-C0E169FBD2AA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
